@@ -1,19 +1,21 @@
 
 const gameSounds = new GameSounds();
+const score = new Score();
 
 const scenario = new Scenario();
 
 const witch = new Witch(0.7);
-const littleDrop = new LittleDrop(0.7, 5);
+const enemies = new Enemies();
 
 
 function preload() {
     gameSounds.preload();
+    score.preload();
 
     scenario.preload();
 
     witch.preload();
-    littleDrop.preload();
+    enemies.preload();
 }
 
 function setup() {
@@ -21,8 +23,8 @@ function setup() {
 
     gameSounds.loopMusic();
 
-    witch.setup(60, height - witch.getPropHeight(witch.proportion));
-    littleDrop.setup(width - 50, height - littleDrop.getPropHeight(littleDrop.proportion));
+    witch.setup(60, height - witch.getPropHeight(witch.proportion) - 20);
+    enemies.setup();
 }
 
 function keyPressed() {
@@ -33,6 +35,8 @@ function keyPressed() {
 
 function draw() {
     scenario.show();
+    score.show();
+    score.addScore();
 
     if (keyIsDown(RIGHT_ARROW)) {
         witch.moveForward();
@@ -46,11 +50,6 @@ function draw() {
     witch.appliesGravity();
     witch.pullLeft();
 
-    littleDrop.show();
-
-    //if (witch.checkCollision(enemy)) {
-    //    noLoop();
-    //}
-
-    littleDrop.move();
+    enemies.show();
+    enemies.move();
 }

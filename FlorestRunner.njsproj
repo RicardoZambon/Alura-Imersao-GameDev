@@ -31,14 +31,27 @@
     <Content Include="css\style.css">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="images\characters\flying-drop.png" />
     <Content Include="images\characters\little-drop.png" />
+    <Content Include="images\characters\troll.png" />
     <Content Include="images\characters\witch.png" />
     <Content Include="images\assets\game-over.png" />
     <Content Include="images\scenario\florest1.png" />
     <Content Include="images\scenario\florest2.png" />
     <Content Include="index.html" />
+    <Content Include="scripts\assets\score.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="scripts\assets\sounds.js" />
     <Content Include="scripts\characters\character.js" />
+    <Content Include="scripts\characters\enemies.js" />
+    <Content Include="scripts\characters\enemy.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="scripts\characters\flying-drop.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="scripts\characters\troll.js" />
     <Content Include="scripts\characters\little-drop.js">
       <SubType>Code</SubType>
     </Content>

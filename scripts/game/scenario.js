@@ -4,11 +4,11 @@ const background2_file = 'images/scenario/florest2.png';
 class Scenario {
     constructor() {
         this.background1_Image = null;
-        this.background1_Speed = 3;
+        this.background1_Speed = 4;
         this.background1_X1 = 0;
         
         this.background2_Image = null;
-        this.background2_Speed = 0.5;
+        this.background2_Speed = 2;
         this.background2_X1 = 0;
     }
 

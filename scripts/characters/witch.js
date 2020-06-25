@@ -2,7 +2,7 @@ const witch_file = 'images/characters/witch.png';
 
 class Witch extends Character {
     constructor(proportion) {
-        super(proportion, [3, 3], [220, 270], 3);
+        super(proportion, [4, 4], [220, 270], 0, 3);
 
         this.startY = this.y;
         this.startX = this.x;
@@ -75,6 +75,10 @@ class Witch extends Character {
 
     checkCollision(enemy) {
         var precision = 0.7;
+
+        //rect(this.x, this.y, this.getPropWidth() * precision, this.getPropHeight() * precision);
+
+        //rect(enemy.x, enemy.y, enemy.getPropWidth(), enemy.getPropHeight());
 
         return collideRectRect(this.x, this.y, this.getPropWidth() * precision, this.getPropHeight() * precision,
             enemy.x, enemy.y, enemy.getPropWidth(), enemy.getPropHeight());

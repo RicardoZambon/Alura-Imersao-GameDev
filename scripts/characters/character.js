@@ -1,12 +1,13 @@
 class Character {
-    constructor(proportion, sprites, spriteSize, speed) {
+    constructor(proportion, sprites, spriteSize, blankSprites, speed) {
         this.sprites = sprites;
         this.spriteSize = spriteSize;
+        this.blankSprites = blankSprites;
         
         this.image = null;
         this.proportion = proportion;
         
-        this.currentSprite = [0, 0];
+        this.currentSprite = [1, 1];
 
         this.speed = speed;
         this.actual = -1;
@@ -14,16 +15,16 @@ class Character {
 
     preload(image) {
         this.image = loadImage(image);
-        console.log('preload');
     }
 
     setup(x, y) {
         this.x = x;
         this.y = y;
-        console.log('setup');
     }
 
     show() {
+        
+
         image(this.image,
             this.x, this.y,
             this.getPropWidth(this.proportion),
@@ -44,12 +45,15 @@ class Character {
 
             this.currentSprite[0] = this.currentSprite[0] + 1;
 
-            if (this.currentSprite[0] > this.sprites[0]) {
-                this.currentSprite[0] = 0;
+            if (this.blankSprites > 0 && this.currentSprite[1] == this.sprites[1] && this.currentSprite[0] > this.sprites[0] - this.blankSprites) {
+                this.currentSprite[0] = 1;
+                this.currentSprite[1] = 1;
+            } else if (this.currentSprite[0] > this.sprites[0]) {
+                this.currentSprite[0] = 1;
                 this.currentSprite[1] = this.currentSprite[1] + 1;
 
                 if (this.currentSprite[1] > this.sprites[1]) {
-                    this.currentSprite[1] = 0;
+                    this.currentSprite[1] = 1;
                 }
             }
         }
@@ -72,10 +76,10 @@ class Character {
     }
 
     getCurrentLeft() {
-        return this.currentSprite[0] * this.spriteSize[0];
+        return (this.currentSprite[0] - 1) * this.spriteSize[0];
     }
 
     getCurrentTop() {
-        return this.currentSprite[1] * this.spriteSize[1];
+        return (this.currentSprite[1] - 1) * this.spriteSize[1];
     }
 }
