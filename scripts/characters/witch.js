@@ -1,8 +1,16 @@
 const witch_file = 'images/characters/witch.png';
 
+const witch_collision = [
+    [30, 5],
+    [80, 5],
+    [110, 60],
+    [50, 130],
+    [10, 70]
+];
+
 class Witch extends Character {
     constructor(proportion) {
-        super(proportion, [4, 4], [220, 270], 0, 3);
+        super(proportion, [4, 4], [220, 270], 0, 3, witch_collision);
 
         this.startY = this.y;
         this.startX = this.x;
@@ -74,13 +82,31 @@ class Witch extends Character {
     }
 
     checkCollision(enemy) {
-        var precision = 0.7;
+        var myCollisionPolygon = this.collisionPolygon.map(v => createVector(v[0] + this.x, v[1] + this.y));
+        var enemyCollisionPolygon = enemy.collisionPolygon.map(v => createVector(v[0] + enemy.x, v[1] + enemy.y));
 
-        //rect(this.x, this.y, this.getPropWidth() * precision, this.getPropHeight() * precision);
+        if (window.DEBUG_COLLISION) {
+            collideDebug(true)
+            noFill()
 
-        //rect(enemy.x, enemy.y, enemy.getPropWidth(), enemy.getPropHeight());
+            stroke(0, 0, 255)
+            beginShape()
+            for (var i = 0; i < myCollisionPolygon.length; i++) {
+                var polygon = myCollisionPolygon[i];
+                vertex(polygon.x, polygon.y);
+            }
+            endShape(CLOSE);
 
-        return collideRectRect(this.x, this.y, this.getPropWidth() * precision, this.getPropHeight() * precision,
-            enemy.x, enemy.y, enemy.getPropWidth(), enemy.getPropHeight());
+            stroke(255, 0, 0)
+            beginShape()
+            for (var i = 0; i < enemyCollisionPolygon.length; i++) {
+                var polygon = enemyCollisionPolygon[i];
+                vertex(polygon.x, polygon.y);
+            }
+            endShape(CLOSE);
+        }
+
+        //TODO: Check the collisions.
+        return collidePolyPoly(myCollisionPolygon, enemyCollisionPolygon);
     }
 }

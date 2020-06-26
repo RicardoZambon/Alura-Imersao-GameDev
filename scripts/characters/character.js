@@ -1,5 +1,5 @@
 class Character {
-    constructor(proportion, sprites, spriteSize, blankSprites, speed) {
+    constructor(proportion, sprites, spriteSize, blankSprites, speed, collisionPolygon) {
         this.sprites = sprites;
         this.spriteSize = spriteSize;
         this.blankSprites = blankSprites;
@@ -11,6 +11,8 @@ class Character {
 
         this.speed = speed;
         this.actual = -1;
+
+        this.collisionPolygon = collisionPolygon;
     }
 
     preload(image) {
