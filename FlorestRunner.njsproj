@@ -32,6 +32,26 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="fonts\start.otf" />
+    <Content Include="images\scenario\florest1\BG_Decor.png" />
+    <Content Include="images\scenario\florest1\Foreground.png" />
+    <Content Include="images\scenario\florest1\Ground.png" />
+    <Content Include="images\scenario\florest1\Middle_Decor.png" />
+    <Content Include="images\scenario\florest1\Sky.png" />
+    <Content Include="images\scenario\florest2\BG_Decor.png" />
+    <Content Include="images\scenario\florest2\Foreground.png" />
+    <Content Include="images\scenario\florest2\Ground.png" />
+    <Content Include="images\scenario\florest2\Middle_Decor.png" />
+    <Content Include="images\scenario\florest2\Sky.png" />
+    <Content Include="images\scenario\florest3\BG_Decor.png" />
+    <Content Include="images\scenario\florest3\Foreground.png" />
+    <Content Include="images\scenario\florest3\Ground.png" />
+    <Content Include="images\scenario\florest3\Middle_Decor.png" />
+    <Content Include="images\scenario\florest3\Sky.png" />
+    <Content Include="images\scenario\florest4\BG_Decor.png" />
+    <Content Include="images\scenario\florest4\Foreground.png" />
+    <Content Include="images\scenario\florest4\Ground.png" />
+    <Content Include="images\scenario\florest4\Middle_Decor.png" />
+    <Content Include="images\scenario\florest4\Sky.png" />
     <Content Include="images\scenario\start.png" />
     <Content Include="images\characters\flying-drop.png" />
     <Content Include="images\characters\little-drop.png" />
@@ -79,6 +99,10 @@
     <Folder Include="images\scenario\" />
     <Folder Include="css\" />
     <Folder Include="fonts\" />
+    <Folder Include="images\scenario\florest1\" />
+    <Folder Include="images\scenario\florest2\" />
+    <Folder Include="images\scenario\florest3\" />
+    <Folder Include="images\scenario\florest4\" />
     <Folder Include="scripts\" />
     <Folder Include="scripts\assets\" />
     <Folder Include="scripts\game\" />
