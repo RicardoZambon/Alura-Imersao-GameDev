@@ -14,13 +14,4 @@ class FlyingDrop extends Enemy {
     setup() {
         super.setup(width - 50, height - this.getPropHeight(this.proportion) - 250);
     }
-
-
-    move() {
-        this.x = this.x - this.speedMovement;
-
-        if (this.x < -this.getPropWidth()) {
-            this.x = width;
-        }
-    }
 }

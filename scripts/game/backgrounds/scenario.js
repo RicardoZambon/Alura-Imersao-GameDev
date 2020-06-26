@@ -1,7 +1,7 @@
 const background1_file = 'images/scenario/florest1.png';
 const background2_file = 'images/scenario/florest2.png';
 
-class Scenario {
+class ScenarioBackground {
     constructor() {
         this.background1_Image = null;
         this.background1_Speed = 4;

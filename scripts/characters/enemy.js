@@ -5,4 +5,12 @@ class Enemy extends Character {
 
         this.speedMovement = speedMovement;
     }
+
+    move(speedIncrease) {
+        this.x = this.x - this.speedMovement - speedIncrease;
+
+        if (this.x < -this.getPropWidth()) {
+            this.x = width;
+        }
+    }
 }

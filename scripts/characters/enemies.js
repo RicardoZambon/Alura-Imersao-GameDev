@@ -4,7 +4,10 @@ class Enemies {
         this.flyingDrop = new FlyingDrop(0.7, 7);
         this.troll = new Troll(0.7, 3);
 
-        this.enemiesList = [ this.littleDrop, this.flyingDrop, this.troll ];
+        this.enemiesList = [this.littleDrop, this.flyingDrop, this.troll];
+
+        this.actualEnemy = 0;
+        this.speedIncrease = 0;
     }
 
 
@@ -18,26 +21,32 @@ class Enemies {
         for (var i = 0; i < this.enemiesList.length; i++) {
             this.enemiesList[i].setup();
         }
-        //this.littleDrop.setup(width - 50, height - littleDrop.getPropHeight(littleDrop.proportion) - 5);
-        //this.flyingDrop.setup(width - 50, height - flyingDrop.getPropHeight(flyingDrop.proportion) - 5);
-        //this.troll.setup(width - 50, height - troll.getPropHeight(troll.proportion) + 30);
     }
 
 
-    show() {
-        for (var i = 0; i < this.enemiesList.length; i++) {
-            var enemy = this.enemiesList[i];
+    show(witch) {
+        var enemy = this.enemiesList[this.actualEnemy];
 
-            if (witch.checkCollision(enemy)) {
-                score.gameOver();
-            }
-            enemy.show();
+        enemy.show();
+
+        if (witch.checkCollision(enemy)) {
+            score.gameOver();
         }
     }
 
     move() {
-        for (var i = 0; i < this.enemiesList.length; i++) {
-            this.enemiesList[i].move();
+        var enemy = this.enemiesList[this.actualEnemy];
+        enemy.move(this.speedIncrease);
+
+        if (enemy.x == width) {
+            this.actualEnemy++;
+
+            if (this.actualEnemy >= this.enemiesList.length) {
+                this.actualEnemy = 0;
+            }
+            
+            //TODO: Calculate accordingly to user points.
+            this.speedIncrease = random(0, 10);
         }
     }
 }

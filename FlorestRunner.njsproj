@@ -31,6 +31,8 @@
     <Content Include="css\style.css">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="fonts\start.otf" />
+    <Content Include="images\scenario\start.png" />
     <Content Include="images\characters\flying-drop.png" />
     <Content Include="images\characters\little-drop.png" />
     <Content Include="images\characters\troll.png" />
@@ -56,7 +58,13 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="scripts\characters\witch.js" />
-    <Content Include="scripts\game\scenario.js" />
+    <Content Include="scripts\game\backgrounds\scenario.js" />
+    <Content Include="scripts\game\backgrounds\start.js" />
+    <Content Include="scripts\game\buttonManager.js" />
+    <Content Include="scripts\game\scenes\game.js" />
+    <Content Include="scripts\game\scenes\scene.js" />
+    <Content Include="scripts\game\sceneManager.js" />
+    <Content Include="scripts\game\scenes\start.js" />
     <Content Include="server.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
@@ -70,10 +78,13 @@
     <Folder Include="images\assets\" />
     <Folder Include="images\scenario\" />
     <Folder Include="css\" />
+    <Folder Include="fonts\" />
     <Folder Include="scripts\" />
     <Folder Include="scripts\assets\" />
     <Folder Include="scripts\game\" />
     <Folder Include="scripts\characters\" />
+    <Folder Include="scripts\game\backgrounds\" />
+    <Folder Include="scripts\game\scenes\" />
     <Folder Include="sounds\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
