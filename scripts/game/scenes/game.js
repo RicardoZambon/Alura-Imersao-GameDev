@@ -20,7 +20,7 @@ class Game extends Scene {
     setup() {
         super.setup();
 
-        this.witch.setup(60, height - this.witch.getPropHeight(this.witch.proportion) - 20);
+        this.witch.setup(60, height - this.witch.getPropHeight(this.witch.proportion) - 40);
         this.enemies.setup();
     }
 
@@ -35,13 +35,16 @@ class Game extends Scene {
     draw(score) {
         super.draw(score);
 
-        this.background.show();
+        this.background.showBackground();
 
         score.show();
         score.addScore();
 
         if (keyIsDown(RIGHT_ARROW)) {
             this.witch.moveForward();
+        }
+        else if (this.witch.maxAndPressedRight) {
+            this.witch.maxAndPressedRight = false;
         }
 
         if (keyIsDown(LEFT_ARROW)) {
@@ -52,7 +55,10 @@ class Game extends Scene {
         this.witch.appliesGravity();
         this.witch.pullLeft();
 
-        this.enemies.show(this.witch);
+        this.enemies.show(this.witch, score);
         this.enemies.move();
+
+        this.background.showForeground();
+        this.background.move(score);
     }
 }

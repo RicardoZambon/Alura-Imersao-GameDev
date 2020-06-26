@@ -22,6 +22,8 @@ class Witch extends Character {
         this.gravity = 1;
 
         this.jumpCount = 0;
+
+        this.maxAndPressedRight = false;
     }
 
     preload() {
@@ -62,18 +64,27 @@ class Witch extends Character {
     }
 
     moveForward() {
-        this.movingForce += 8;
+        if (this.x + this.getWidth() <= width) {
+            this.movingForce += 8;
+        }
+        else {
+            this.maxAndPressedRight = true;
+        }
     }
 
     moveBack() {
-        this.movingForce -= 3;
+        if (this.x > this.startX) {
+            this.movingForce -= 3;
+        }
     }
 
     pullLeft() {
         if (this.movingForce > 0 || this.x > this.startX) {
             this.x = this.startX + this.movingForce;
 
-            this.movingForce = this.movingForce - this.forceLeft;
+            if (!this.maxAndPressedRight) {
+                this.movingForce = this.movingForce - this.forceLeft;
+            }
 
             if (this.x < this.startX) {
                 this.x = this.startX;

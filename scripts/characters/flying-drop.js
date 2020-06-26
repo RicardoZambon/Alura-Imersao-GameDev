@@ -21,5 +21,10 @@ class FlyingDrop extends Enemy {
 
     setup() {
         super.setup(width - 50, height - this.getPropHeight(this.proportion) - 250);
+        this.baseY = this.y;
+    }
+
+    variateY(y) {
+        this.y = this.baseY + y;
     }
 }

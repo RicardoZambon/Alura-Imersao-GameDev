@@ -24,7 +24,7 @@ class Enemies {
     }
 
 
-    show(witch) {
+    show(witch, score) {
         var enemy = this.enemiesList[this.actualEnemy];
 
         enemy.show();
@@ -44,7 +44,11 @@ class Enemies {
             if (this.actualEnemy >= this.enemiesList.length) {
                 this.actualEnemy = 0;
             }
-            
+
+            if (typeof this.enemiesList[this.actualEnemy].variateY !== 'undefined') {
+                this.enemiesList[this.actualEnemy].variateY(random(0, 50));
+            }
+
             //TODO: Calculate accordingly to user points.
             this.speedIncrease = random(0, 10);
         }

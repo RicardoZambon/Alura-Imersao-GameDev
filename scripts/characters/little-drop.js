@@ -20,6 +20,6 @@ class LittleDrop extends Enemy {
     }
 
     setup() {
-        super.setup(width - 50, height - this.getPropHeight(this.proportion) - 5);
+        super.setup(width - 50, height - this.getPropHeight(this.proportion) - 35);
     }
 }

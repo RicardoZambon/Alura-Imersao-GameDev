@@ -19,6 +19,6 @@ class Troll extends Enemy {
     }
 
     setup() {
-        super.setup(width - 50, height - this.getPropHeight(this.proportion) + 30);
+        super.setup(width - 50, height - this.getPropHeight(this.proportion) + 10);
     }
 }
