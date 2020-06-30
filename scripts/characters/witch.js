@@ -1,11 +1,11 @@
 const witch_file = 'images/characters/witch.png';
 
 const witch_collision = [
-    [30, 5],
-    [80, 5],
-    [110, 60],
-    [50, 130],
-    [10, 70]
+    [50, 25],
+    [80, 25],
+    [125, 90],
+    [70, 170],
+    [35, 100]
 ];
 
 class Witch extends Character {
@@ -52,7 +52,7 @@ class Witch extends Character {
             super.show(this.position);
         }
         else {
-            super.animate();
+            super.animate(this.position);
         }
 
         if (this.gotHit) {
@@ -127,10 +127,10 @@ class Witch extends Character {
         }
     }
 
-    checkCollision(enemy, enemyPosition) {
-        if (!this.gotHit) {
+    checkCollision(object, position, damage) {
+        if (!this.gotHit || !damage) {
             var myCollisionPolygon = this.collisionPolygon.map(v => createVector(v[0] + this.position.x, v[1] + this.position.y));
-            var enemyCollisionPolygon = enemy.collisionPolygon.map(v => createVector(v[0] + enemyPosition.x, v[1] + enemyPosition.y));
+            var objectCollisionPolygon = object.collisionPolygon.map(v => createVector(v[0] + position.x, v[1] + position.y));
 
             if (window.DEBUG_COLLISION) {
                 collideDebug(true)
@@ -144,21 +144,27 @@ class Witch extends Character {
                 }
                 endShape(CLOSE);
 
-                stroke(255, 0, 0)
+                stroke(0, 0, 0)
                 beginShape()
-                for (var i = 0; i < enemyCollisionPolygon.length; i++) {
-                    var polygon = enemyCollisionPolygon[i];
+                for (var i = 0; i < objectCollisionPolygon.length; i++) {
+                    var polygon = objectCollisionPolygon[i];
                     vertex(polygon.x, polygon.y);
                 }
                 endShape(CLOSE);
             }
 
-            //TODO: Check the collisions.
-            var collision = collidePolyPoly(myCollisionPolygon, enemyCollisionPolygon);
+            var collision = collidePolyPoly(myCollisionPolygon, objectCollisionPolygon);
 
-            this.gotHit = collision;
-            if (this.gotHit) {
-                gameSounds.playImpact();
+            if (collision) {
+                if (damage) {
+                    this.gotHit = collision;
+                    if (this.gotHit) {
+                        gameSounds.playImpact();
+                    }
+                }
+                else {
+                    gameSounds.playLifeUp();
+                }
             }
 
             return collision;

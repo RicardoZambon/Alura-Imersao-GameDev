@@ -1,11 +1,11 @@
 const littledrop_file = 'images/characters/little-drop.png';
 
 const littledrop_collision = [
-    [5, 25],
-    [15, 10],
-    [52, 10],
-    [52, 47],
-    [15, 47]
+    [5, 35],
+    [15, 20],
+    [55, 20],
+    [55, 57],
+    [15, 57]
 ]
 
 class LittleDrop extends Enemy {

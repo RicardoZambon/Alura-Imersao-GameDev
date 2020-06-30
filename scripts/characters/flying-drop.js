@@ -1,10 +1,10 @@
 const flyingdrop_file = 'images/characters/flying-drop.png';
 
 const flyingdrop_collision = [
-    [15, 20],
-    [90, 15],
-    [90, 70],
-    [15, 60]
+    [35, 35],
+    [90, 25],
+    [90, 72],
+    [35, 72]
 ]
 
 class FlyingDrop extends Enemy {

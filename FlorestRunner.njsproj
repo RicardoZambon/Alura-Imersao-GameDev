@@ -95,6 +95,7 @@
     <Content Include="sounds\impact.mp3" />
     <Content Include="sounds\jump.mp3" />
     <Content Include="sounds\music.mp3" />
+    <Content Include="sounds\lifeup.mp3" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="images\" />

@@ -25,7 +25,8 @@ class Game extends Scene {
         super.setup();
 
         this.witch.setup(60, height - this.witch.getPropHeight(this.witch.proportion) - 40);
-        this.enemies.setup();
+
+        this.life.setup(6, height - 200, 30);
     }
 
     keyPressed() {
@@ -64,7 +65,8 @@ class Game extends Scene {
         score.show();
         score.addScore();
 
-        this.life.draw();
+        this.life.show(this.witch);
+        this.life.calculateLifesToShow(score);
 
         this.background.move(score);
     }

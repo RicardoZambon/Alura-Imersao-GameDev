@@ -1,18 +1,18 @@
 class Enemies {
     constructor() {
-        this.littleDrop = new LittleDrop(0.7, 5);
-        this.flyingDrop = new FlyingDrop(0.7, 7);
-        this.troll = new Troll(0.7, 3);
+        this.littleDrop = new LittleDrop(0.7, 10);
+        this.flyingDrop = new FlyingDrop(0.7, 12);
+        this.troll = new Troll(0.7, 7);
 
         this.enemiesList = [this.littleDrop, this.flyingDrop, this.troll];
 
         this.scorePhase = 300;
         this.enemyPhase = 1;
+        this.maxPhase = 10;
 
         this.enemiesShown = [];
         this.enemiesPositions = [];
         this.enemiesSpeed = [];
-        //this.calculateEnemies();
     }
 
 
@@ -22,18 +22,13 @@ class Enemies {
         }
     }
 
-    setup() {
-        
-    }
-
-
     show(witch, life, score) {
         for (var e = 0; e < this.enemiesShown.length; e++) {
             var enemy = this.enemiesShown[e];
             enemy.show(this.enemiesPositions[e]);
 
-            if (witch.checkCollision(enemy)) {
-                //life.removeLife();
+            if (witch.checkCollision(enemy, this.enemiesPositions[e], true)) {
+                life.removeLife();
 
                 if (life.currentLife <= 0) {
                     score.gameOver();
@@ -45,17 +40,19 @@ class Enemies {
     move(score) {
         for (var e = 0; e < this.enemiesShown.length; e++) {
             var enemy = this.enemiesShown[e];
-            enemy.move(this.enemiesPositions[e], this.enemiesSpeed[e]);
+            var enemyPosition = this.enemiesPositions[e];
+            enemy.move(enemyPosition, this.enemiesSpeed[e]);
 
-            if (enemy.x == width) {
+            if (enemyPosition.x == width) {
                 this.enemiesShown.splice(e, 1);
                 this.enemiesSpeed.splice(e, 1);
+                this.enemiesPositions.splice(e, 1);
                 e--;
             }
         }
 
         var phase = parseInt((score.score - score.score % this.scorePhase) / this.scorePhase);
-        if (phase > this.enemyPhase) {
+        if (phase > this.enemyPhase && this.enemyPhase != this.maxPhase) {
             this.enemyPhase = phase;
         }
 
@@ -73,8 +70,7 @@ class Enemies {
                 enemy.variateY(Math.floor(Math.random() * 50) + 1);
             }
 
-            //TODO: Calculate accordingly to user points.
-            this.enemiesSpeed.push(Math.floor(Math.random() * 10) + 1);
+            this.enemiesSpeed.push(Math.floor(Math.random() * this.enemyPhase) * (this.enemyPhase < 4 ? 2 : 1));
             this.enemiesPositions.push(new CharacterPosition(width, height - enemy.getPropHeight() - enemy.heightVariant));
             this.enemiesShown.push(enemy);
         }

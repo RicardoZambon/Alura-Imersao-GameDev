@@ -6,11 +6,8 @@ class Character {
         
         this.image = null;
         this.proportion = proportion;
-        
-        this.currentSprite = [1, 1];
 
         this.speed = speed;
-        this.actual = -1;
 
         this.collisionPolygon = collisionPolygon;
     }
@@ -24,31 +21,31 @@ class Character {
             characterPosition.x, characterPosition.y,
             this.getPropWidth(this.proportion),
             this.getPropHeight(this.proportion),
-            this.getCurrentLeft(),
-            this.getCurrentTop(),
+            this.getCurrentLeft(characterPosition),
+            this.getCurrentTop(characterPosition),
             this.getWidth(),
             this.getHeight());
 
-        this.animate();
+        this.animate(characterPosition);
     }
 
-    animate() {
-        this.actual = this.actual + 1;
+    animate(characterPosition) {
+        characterPosition.spriteCount = characterPosition.spriteCount + 1;
 
-        if (this.actual == this.speed || this.actual < 0) {
-            this.actual = 0;
+        if (characterPosition.spriteCount == this.speed || characterPosition.spriteCount < 0) {
+            characterPosition.spriteCount = 0;
 
-            this.currentSprite[0] = this.currentSprite[0] + 1;
+            characterPosition.currentSprite[0] = characterPosition.currentSprite[0] + 1;
 
-            if (this.blankSprites > 0 && this.currentSprite[1] == this.sprites[1] && this.currentSprite[0] > this.sprites[0] - this.blankSprites) {
-                this.currentSprite[0] = 1;
-                this.currentSprite[1] = 1;
-            } else if (this.currentSprite[0] > this.sprites[0]) {
-                this.currentSprite[0] = 1;
-                this.currentSprite[1] = this.currentSprite[1] + 1;
+            if (this.blankSprites > 0 && characterPosition.currentSprite[1] == this.sprites[1] && characterPosition.currentSprite[0] > this.sprites[0] - this.blankSprites) {
+                characterPosition.currentSprite[0] = 1;
+                characterPosition.currentSprite[1] = 1;
+            } else if (characterPosition.currentSprite[0] > this.sprites[0]) {
+                characterPosition.currentSprite[0] = 1;
+                characterPosition.currentSprite[1] = characterPosition.currentSprite[1] + 1;
 
-                if (this.currentSprite[1] > this.sprites[1]) {
-                    this.currentSprite[1] = 1;
+                if (characterPosition.currentSprite[1] > this.sprites[1]) {
+                    characterPosition.currentSprite[1] = 1;
                 }
             }
         }
@@ -70,11 +67,11 @@ class Character {
         return this.spriteSize[1] * this.proportion;
     }
 
-    getCurrentLeft() {
-        return (this.currentSprite[0] - 1) * this.spriteSize[0];
+    getCurrentLeft(characterPosition) {
+        return (characterPosition.currentSprite[0] - 1) * this.spriteSize[0];
     }
 
-    getCurrentTop() {
-        return (this.currentSprite[1] - 1) * this.spriteSize[1];
+    getCurrentTop(characterPosition) {
+        return (characterPosition.currentSprite[1] - 1) * this.spriteSize[1];
     }
 }

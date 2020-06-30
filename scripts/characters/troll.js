@@ -1,12 +1,15 @@
 const troll_file = 'images/characters/troll.png';
 
-const troll_collision = [
-    [20, 80],
-    [80, 105],
-    [120, 20],
-    [195, 130],
-    [150, 170],
-    [20, 140]
+var troll_collision = [
+    [60, 150],
+    [105, 165],
+    [160, 60],
+    [200, 70],
+    [210, 100],
+    [235, 180],
+    [210, 230],
+    [130, 230],
+    [60, 185]
 ]
 
 class Troll extends Enemy {
