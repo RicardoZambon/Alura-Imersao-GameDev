@@ -32,6 +32,7 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="fonts\start.otf" />
+    <Content Include="images\assets\heart.png" />
     <Content Include="images\scenario\florest1\BG_Decor.png" />
     <Content Include="images\scenario\florest1\Foreground.png" />
     <Content Include="images\scenario\florest1\Ground.png" />
@@ -61,6 +62,7 @@
     <Content Include="images\scenario\florest1.png" />
     <Content Include="images\scenario\florest2.png" />
     <Content Include="index.html" />
+    <Content Include="scripts\characters\characterPosition.js" />
     <Content Include="scripts\assets\score.js">
       <SubType>Code</SubType>
     </Content>
@@ -81,6 +83,7 @@
     <Content Include="scripts\game\backgrounds\scenario.js" />
     <Content Include="scripts\game\backgrounds\start.js" />
     <Content Include="scripts\game\buttonManager.js" />
+    <Content Include="scripts\game\life.js" />
     <Content Include="scripts\game\scenes\game.js" />
     <Content Include="scripts\game\scenes\scene.js" />
     <Content Include="scripts\game\sceneManager.js" />
@@ -89,6 +92,7 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="sketch.js" />
+    <Content Include="sounds\impact.mp3" />
     <Content Include="sounds\jump.mp3" />
     <Content Include="sounds\music.mp3" />
   </ItemGroup>

@@ -12,13 +12,11 @@ const troll_collision = [
 class Troll extends Enemy {
     constructor(proportion, speedMovement) {
         super(proportion, speedMovement, [5, 6], [400, 400], 2, 3, troll_collision);
+
+        this.heightVariant = -10;
     }
 
     preload() {
         super.preload(troll_file);
-    }
-
-    setup() {
-        super.setup(width - 50, height - this.getPropHeight(this.proportion) + 10);
     }
 }

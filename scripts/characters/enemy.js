@@ -4,13 +4,14 @@ class Enemy extends Character {
         super(proportion, sprites, spriteSize, blankSprites, speed, collisionPolygon);
 
         this.speedMovement = speedMovement;
+        this.heightVariant = 0;
     }
 
-    move(speedIncrease) {
-        this.x = this.x - this.speedMovement - speedIncrease;
+    move(characterPosition, speedIncrease) {
+        characterPosition.x = characterPosition.x - this.speedMovement - speedIncrease;
 
-        if (this.x < -this.getPropWidth()) {
-            this.x = width;
+        if (characterPosition.x < -this.getPropWidth()) {
+            characterPosition.x = width;
         }
     }
 }

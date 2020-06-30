@@ -19,16 +19,9 @@ class Character {
         this.image = loadImage(image);
     }
 
-    setup(x, y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    show() {
-        
-
+    show(characterPosition) {
         image(this.image,
-            this.x, this.y,
+            characterPosition.x, characterPosition.y,
             this.getPropWidth(this.proportion),
             this.getPropHeight(this.proportion),
             this.getCurrentLeft(),

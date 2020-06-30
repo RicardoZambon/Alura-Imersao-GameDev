@@ -13,13 +13,10 @@ class LittleDrop extends Enemy {
         super(proportion, speedMovement, [4, 7], [105, 100], 0, 2, littledrop_collision);
 
         this.speedMovement = speedMovement;
+        this.heightVariant = 35;
     }
 
     preload() {
         super.preload(littledrop_file);
-    }
-
-    setup() {
-        super.setup(width - 50, height - this.getPropHeight(this.proportion) - 35);
     }
 }

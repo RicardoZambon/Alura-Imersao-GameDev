@@ -6,6 +6,8 @@ class Game extends Scene {
         this.enemies = new Enemies();
 
         this.background = new ScenarioBackground();
+
+        this.life = new Life(3, 7);
     }
 
     preload() {
@@ -15,6 +17,8 @@ class Game extends Scene {
         this.enemies.preload();
 
         this.background.preload();
+
+        this.life.preload();
     }
 
     setup() {
@@ -37,9 +41,6 @@ class Game extends Scene {
 
         this.background.showBackground();
 
-        score.show();
-        score.addScore();
-
         if (keyIsDown(RIGHT_ARROW)) {
             this.witch.moveForward();
         }
@@ -55,10 +56,16 @@ class Game extends Scene {
         this.witch.appliesGravity();
         this.witch.pullLeft();
 
-        this.enemies.show(this.witch, score);
-        this.enemies.move();
+        this.enemies.show(this.witch, this.life, score);
+        this.enemies.move(score);
 
         this.background.showForeground();
+
+        score.show();
+        score.addScore();
+
+        this.life.draw();
+
         this.background.move(score);
     }
 }

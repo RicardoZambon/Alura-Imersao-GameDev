@@ -6,8 +6,13 @@ class Enemies {
 
         this.enemiesList = [this.littleDrop, this.flyingDrop, this.troll];
 
-        this.actualEnemy = 0;
-        this.speedIncrease = 0;
+        this.scorePhase = 300;
+        this.enemyPhase = 1;
+
+        this.enemiesShown = [];
+        this.enemiesPositions = [];
+        this.enemiesSpeed = [];
+        //this.calculateEnemies();
     }
 
 
@@ -18,39 +23,60 @@ class Enemies {
     }
 
     setup() {
-        for (var i = 0; i < this.enemiesList.length; i++) {
-            this.enemiesList[i].setup();
-        }
+        
     }
 
 
-    show(witch, score) {
-        var enemy = this.enemiesList[this.actualEnemy];
+    show(witch, life, score) {
+        for (var e = 0; e < this.enemiesShown.length; e++) {
+            var enemy = this.enemiesShown[e];
+            enemy.show(this.enemiesPositions[e]);
 
-        enemy.show();
+            if (witch.checkCollision(enemy)) {
+                //life.removeLife();
 
-        if (witch.checkCollision(enemy)) {
-            score.gameOver();
-        }
-    }
-
-    move() {
-        var enemy = this.enemiesList[this.actualEnemy];
-        enemy.move(this.speedIncrease);
-
-        if (enemy.x == width) {
-            this.actualEnemy++;
-
-            if (this.actualEnemy >= this.enemiesList.length) {
-                this.actualEnemy = 0;
+                if (life.currentLife <= 0) {
+                    score.gameOver();
+                }
             }
+        }
+    }
 
-            if (typeof this.enemiesList[this.actualEnemy].variateY !== 'undefined') {
-                this.enemiesList[this.actualEnemy].variateY(random(0, 50));
+    move(score) {
+        for (var e = 0; e < this.enemiesShown.length; e++) {
+            var enemy = this.enemiesShown[e];
+            enemy.move(this.enemiesPositions[e], this.enemiesSpeed[e]);
+
+            if (enemy.x == width) {
+                this.enemiesShown.splice(e, 1);
+                this.enemiesSpeed.splice(e, 1);
+                e--;
+            }
+        }
+
+        var phase = parseInt((score.score - score.score % this.scorePhase) / this.scorePhase);
+        if (phase > this.enemyPhase) {
+            this.enemyPhase = phase;
+        }
+
+        if (this.enemiesShown.length < this.enemyPhase) {
+            this.calculateEnemies();
+        }
+    }
+
+    calculateEnemies() {
+        for (var e = 0; e < (this.enemyPhase - this.enemiesShown.length); e++) {
+            var enemyIndex = Math.floor(Math.random() * this.enemiesList.length);
+            var enemy = this.enemiesList[enemyIndex];
+
+            if (typeof enemy.variateY !== 'undefined') {
+                enemy.variateY(Math.floor(Math.random() * 50) + 1);
             }
 
             //TODO: Calculate accordingly to user points.
-            this.speedIncrease = random(0, 10);
+            this.enemiesSpeed.push(Math.floor(Math.random() * 10) + 1);
+            this.enemiesPositions.push(new CharacterPosition(width, height - enemy.getPropHeight() - enemy.heightVariant));
+            this.enemiesShown.push(enemy);
         }
     }
 }

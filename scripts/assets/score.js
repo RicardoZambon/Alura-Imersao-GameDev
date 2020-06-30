@@ -24,8 +24,8 @@ class Score {
     }
 
     gameOver() {
-        //image(this.gameoverImage, width / 2 - 200, height / 3 - 100)
-
-        //noLoop();
+        image(this.gameoverImage, width / 2 - 200, height / 3 - 100);
+        gameSounds.playGameOver();
+        noLoop();
     }
 }
