@@ -1,8 +1,8 @@
 const background_files = [
-    ['images/scenario/florest1/Sky.png', 'images/scenario/florest1/BG_Decor.png', 'images/scenario/florest2/Middle_Decor.png', 'images/scenario/florest1/ForeGround.png', 'images/scenario/florest1/Ground.png'],
-    ['images/scenario/florest2/Sky.png', 'images/scenario/florest2/BG_Decor.png', 'images/scenario/florest2/Middle_Decor.png', 'images/scenario/florest2/ForeGround.png', 'images/scenario/florest2/Ground.png'],
-    ['images/scenario/florest3/Sky.png', 'images/scenario/florest3/BG_Decor.png', 'images/scenario/florest3/Middle_Decor.png', 'images/scenario/florest3/ForeGround.png', 'images/scenario/florest3/Ground.png'],
-    ['images/scenario/florest4/Sky.png', 'images/scenario/florest4/BG_Decor.png', 'images/scenario/florest4/Middle_Decor.png', 'images/scenario/florest4/ForeGround.png', 'images/scenario/florest4/Ground.png']
+    ['images/scenario/florest1/Sky.png', 'images/scenario/florest1/BG_Decor.png', 'images/scenario/florest2/Middle_Decor.png', 'images/scenario/florest1/Foreground.png', 'images/scenario/florest1/Ground.png'],
+    ['images/scenario/florest2/Sky.png', 'images/scenario/florest2/BG_Decor.png', 'images/scenario/florest2/Middle_Decor.png', 'images/scenario/florest2/Foreground.png', 'images/scenario/florest2/Ground.png'],
+    ['images/scenario/florest3/Sky.png', 'images/scenario/florest3/BG_Decor.png', 'images/scenario/florest3/Middle_Decor.png', 'images/scenario/florest3/Foreground.png', 'images/scenario/florest3/Ground.png'],
+    ['images/scenario/florest4/Sky.png', 'images/scenario/florest4/BG_Decor.png', 'images/scenario/florest4/Middle_Decor.png', 'images/scenario/florest4/Foreground.png', 'images/scenario/florest4/Ground.png']
 ];
 
 const background_transition_files = [
